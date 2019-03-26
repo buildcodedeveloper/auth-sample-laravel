@@ -41,46 +41,46 @@ class LoginController extends Controller
 
 
 
-    protected function validateLogin(Request $request){
-        $this->validate($request, [
-            $this->username() => 'required',
-      'senha' => 'required',
-        ]);
-    }
-    protected function credentials(Request $request)
-    {
-        return $request->only($this->username(), 'senha');
-    }
+//     protected function validateLogin(Request $request){
+//         $this->validate($request, [
+//             $this->username() => 'required',
+//       'senha' => 'required',
+//         ]);
+//     }
+//     protected function credentials(Request $request)
+//     {
+//         return $request->only($this->username(), 'senha');
+//     }
 
-    public function login(Request $request)
-{
-    $this->validate($request, [
-        'email'    => 'required',
-        'senha' => 'required',
-    ]);
+//     public function login(Request $request)
+// {
+//     $this->validate($request, [
+//         'email'    => 'required',
+//         'senha' => 'required',
+//     ]);
 
-    $login_type = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL )
-        ? 'email'
-        : 'username';
+//     $login_type = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL )
+//         ? 'email'
+//         : 'username';
 
-    $request->merge([
-        $login_type => $request->input('email')
-    ]);
+//     $request->merge([
+//         $login_type => $request->input('email')
+//     ]);
 
-    if (Auth::attempt(['email'=>$request->input('email'), 'senha' =>$request->input('senha')]))
-    {
-        return redirect()->intended('home');
-    }
-    else
-    {
-         return redirect()->intended('login')->with('status', 'Invalid Login Credentials !');
-    }
+//     if (Auth::attempt(['email'=>$request->input('email'), 'senha' =>$request->input('senha')]))
+//     {
+//         return redirect()->intended('home');
+//     }
+//     else
+//     {
+//          return redirect()->intended('login')->with('status', 'Invalid Login Credentials !');
+//     }
 
 
-    return redirect()->back()
-        ->withInput()
-        ->withErrors([
-            'login' => 'These credentials do not match our records.',
-        ]);
-    }
+//     return redirect()->back()
+//         ->withInput()
+//         ->withErrors([
+//             'login' => 'These credentials do not match our records.',
+//         ]);
+//     }
 }
