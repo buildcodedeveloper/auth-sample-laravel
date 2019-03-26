@@ -10,6 +10,7 @@ class Usuario  extends Authenticatable
     use Notifiable;
 
     protected $table = 'usuarios';
+    protected $password = 'senha';
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,7 @@ class Usuario  extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','username','email', 'passcode','active'
+        'name','username','email', 'senha','active'
     ];
 
     /**
@@ -26,13 +27,21 @@ class Usuario  extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'passcode', 'remember_token',
+        'senha', 'remember_token',
     ];
 
 
     public function getAuthPassword()
     {
-      return $this->passcode;
+      return $this->senha;
     }
+
+   
+
+
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['senha'] = bcrypt($value);
+    // }
     //
 }

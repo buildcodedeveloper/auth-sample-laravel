@@ -18,6 +18,12 @@ return [
         'passwords_customusers' => 'customusers',
     ],
 
+
+    'defaults' => [
+        'guard' => 'web',
+        'passwords_usuarios' => 'usuarios',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -39,6 +45,11 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'customusers',
+        ],
+
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'usuarios',
         ],
 
         'api' => [
@@ -98,17 +109,28 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'users' => [
+            'provider' => 'usuarios',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
 
 
     /*
         Custom User
     */
-    
+
     'providers' => [
         'customusers' => [
             'driver' => 'eloquent',
             'model' => App\CustomUser::class,
+        ],
+
+        'usuarios' => [
+            'driver' => 'eloquent',
+            'model' => App\Usuario::class,
         ],
 
         // 'users' => [
@@ -124,6 +146,7 @@ return [
     ],
 
 
+
     'passwords_customusers' => [
         'users' => [
             'provider' => 'customusers',
@@ -132,6 +155,20 @@ return [
         ],
     ],
 
+
+    'usuarios' => [
+        'provider' => 'usuarios',
+        'table' => 'password_resets',
+        'expire' => 60,
+    ],
+
+    'passwords_usuarios' => [
+        'users' => [
+            'provider' => 'usuarios',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+    ],
 
 
 ];

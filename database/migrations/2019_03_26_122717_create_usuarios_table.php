@@ -17,7 +17,7 @@ class CreateUsuariosTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('username');
-            $table->string('passcode');
+            $table->string('senha');
             $table->string('email');
             $table->boolean('active');
             $table->rememberToken();

@@ -44,22 +44,22 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('passcode') ? ' has-error' : '' }}">
-                            <label for="passcode" class="col-md-4 control-label">Password</label>
+                        <div class="form-group{{ $errors->has('senha') ? ' has-error' : '' }}">
+                            <label for="senha" class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
-                                <input id="passcode" type="password" class="form-control" name="passcode" required>
-                                @if ($errors->has('passcode'))
+                                <input id="senha" type="password" class="form-control" name="senha" required>
+                                @if ($errors->has('senha'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('passcode') }}</strong>
+                                    <strong>{{ $errors->first('senha') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="passcode-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="senha-confirm" class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
-                                <input id="passcode-confirm" type="password" class="form-control"
-                                    name="passcode_confirmation" required>
+                                <input id="senha-confirm" type="password" class="form-control"
+                                    name="senha_confirmation" required>
                             </div>
                         </div>
                         <div class="form-group">
