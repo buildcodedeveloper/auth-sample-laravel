@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Auth;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
     }
 
     /**
@@ -23,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // //
+        Auth::provider('usuarioresponse', function($app, array $config) {
+            return new CustomUserProvider($app['hash'], $config['model']);
+        });
+
+        // Auth::setProvider(new CustomUserProvider(app(Hasher::class), Usuario::class));
     }
 }

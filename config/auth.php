@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -12,16 +10,9 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
     'defaults' => [
         'guard' => 'web',
-        'passwords_customusers' => 'customusers',
-    ],
-
-
-    'defaults' => [
-        'guard' => 'web',
-        'passwords_usuarios' => 'usuarios',
+        'passwords' => 'usuarios',
     ],
 
     /*
@@ -40,13 +31,7 @@ return [
     | Supported: "session", "token"
     |
     */
-
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'customusers',
-        ],
-
         'web' => [
             'driver' => 'session',
             'provider' => 'usuarios',
@@ -58,7 +43,6 @@ return [
             'hash' => false,
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -75,19 +59,22 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
+        'customusers' => [
+            'driver' => 'eloquent',
+            'model' => App\CustomUser::class,
+        ],
 
+        'usuarios' => [
+            'driver' => 'usuarioresponse',
+            'model' => App\Usuario::class,
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -102,7 +89,6 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
     'passwords' => [
         'users' => [
             'provider' => 'customusers',
@@ -110,65 +96,11 @@ return [
             'expire' => 60,
         ],
 
-        'users' => [
-            'provider' => 'usuarios',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-    ],
-
-
-    /*
-        Custom User
-    */
-
-    'providers' => [
-        'customusers' => [
-            'driver' => 'eloquent',
-            'model' => App\CustomUser::class,
-        ],
-
         'usuarios' => [
-            'driver' => 'eloquent',
-            'model' => App\Usuario::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
-
-    'customusers' => [
-        'provider' => 'customusers',
-        'table' => 'password_resets',
-        'expire' => 60,
-    ],
-
-
-
-    'passwords_customusers' => [
-        'users' => [
-            'provider' => 'customusers',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-    ],
-
-
-    'usuarios' => [
-        'provider' => 'usuarios',
-        'table' => 'password_resets',
-        'expire' => 60,
-    ],
-
-    'passwords_usuarios' => [
-        'users' => [
             'provider' => 'usuarios',
             'table' => 'password_resets',
             'expire' => 60,
         ],
     ],
-
 
 ];
